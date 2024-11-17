@@ -25,6 +25,9 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, UUID> {
     @Query(value = "SELECT * FROM t_enrollment WHERE id = :id", nativeQuery = true)
     Optional<Enrollment> findEnrollmentById(@Param("id") UUID id);
 
+    @Query(value = "SELECT * FROM t_enrollment WHERE student_id = :student_id", nativeQuery = true)
+    Optional<Enrollment> findEnrollmentByStudentId(@Param("student_id") UUID studentId);
+
     @Query(value = "SELECT * FROM t_enrollment", nativeQuery = true)
     List<Enrollment> findAllEnrollments();
 
@@ -42,6 +45,21 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, UUID> {
 
     @Modifying
     @Transactional
+    @Query(value = "UPDATE t_enrollment SET total_quota = :total_quota, remaining_quota = :remaining_quota WHERE id = :id", nativeQuery = true)
+    void updateTotalQuota(@Param("id") UUID id,
+                          @Param("total_quota") Integer totalQuota,
+                          @Param("remaining_quota") Integer remainingQuota);
+
+//    @Modifying
+//    @Transactional
+//    @Query(value = "UPDATE t_enrollment SET remaining_quota = :remaining_quota WHERE id = :id", nativeQuery = true)
+//    void upda
+
+    @Modifying
+    @Transactional
     @Query(value = "DELETE FROM t_enrollment WHERE id = :id", nativeQuery = true)
     void deleteEnrollment(@Param("id") UUID id);
 }
+
+
+
