@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -22,4 +23,19 @@ public interface LecturerRepository extends JpaRepository<Lecturer, UUID> {
 
     @Query(value = "SELECT * FROM m_lecturer WHERE id = :id", nativeQuery = true)
     Optional<Lecturer> findLecturerById(@Param("id") UUID id);
+
+    @Query(value = "SELECT * FROM m_lecturer", nativeQuery = true)
+    List<Lecturer> findAllLecturers();
+
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE m_lecturer SET name = :name, email = :email WHERE id = :id", nativeQuery = true)
+    void updateLecturer(@Param("id") UUID id,
+                        @Param("name") String name,
+                        @Param("email") String email);
+
+    @Modifying
+    @Transactional
+    @Query(value = "DELETE FROM m_lecturer WHERE id = :id", nativeQuery = true)
+    void deleteLecturer(@Param("id") UUID id);
 }

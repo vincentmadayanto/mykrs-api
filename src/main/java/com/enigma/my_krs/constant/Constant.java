@@ -31,6 +31,10 @@ public class Constant {
 
     // Lecturer
     public static final String SUCCESS_CREATE_LECTURER = "Lecturer Created Successfully";
+    public static final String SUCCESS_FETCH_ALL_LECTURER = "Fetch All Lecturers Success";
+    public static final String SUCCESS_FETCH_LECTURER_BY_ID = "Fetch Lecturer By Id Success";
+    public static final String SUCCESS_UPDATE_LECTURER_BY_ID = "Updated Lecturer by id successfully";
+    public static final String SUCCESS_DELETE_LECTURER_BY_ID = "Deleted Lecturer by id successfully";
 
     // Enrollment
     public static final String SUCCESS_CREATE_ENROLLMENT = "Enrollment created successfully";
