@@ -59,13 +59,6 @@ public class EnrollmentServiceImpl implements EnrollmentService {
         return enrollmentRepository.findAllEnrollments().stream().map(this::mapToEnrollmentResponse).collect(Collectors.toList());
     }
 
-//    @Override
-//    public EnrollmentResponse updateEnrollmentById(UUID id) {
-//        Enrollment enrollment = getOne(id);
-//        enrollment.setStudent(studentService.getOne());
-//        return null;
-//    }
-
     @Override
     public void deleteEnrollmentById(UUID id) {
         enrollmentRepository.deleteEnrollment(getOne(id).getId());

@@ -62,7 +62,6 @@ public class CourseOfferingServiceImpl implements CourseOfferingService {
 
         Long totalCourseOfferings = courseOfferingRepository.countAllCourseOfferings(query);
 
-        // Map results to response objects
         List<CourseOfferingResponse> responses = courseOfferings.stream()
                 .map(this::mapToCourseOfferingResponse)
                 .toList();

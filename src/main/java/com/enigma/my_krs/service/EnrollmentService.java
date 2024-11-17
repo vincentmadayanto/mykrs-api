@@ -14,7 +14,6 @@ public interface EnrollmentService {
     EnrollmentResponse getEnrollmentById(UUID id);
     EnrollmentResponse getEnrollmentByStudentId(UUID studentId);
     List<EnrollmentResponse> getAllEnrollments();
-//    EnrollmentResponse updateEnrollmentById(UUID id);
     void deleteEnrollmentById(UUID id);
 
     // Enrollment Detail Service

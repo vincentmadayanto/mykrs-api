@@ -14,7 +14,6 @@ import java.util.UUID;
 @Builder
 public class Lecturer {
     @Id
-    @GeneratedValue
     private UUID id;
 
     @Column(name = "name", nullable = false, length = 40)

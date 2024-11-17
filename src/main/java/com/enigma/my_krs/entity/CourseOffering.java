@@ -23,8 +23,7 @@ public class CourseOffering {
     @Column(name = "class", nullable = false)
     private Character classRoom;
 
-//    @Column(name = "available_seats", nullable = false, columnDefinition = "bigint check (available_seats > 0)")
-    @Column(name = "available_seats", nullable = false)
+    @Column(name = "available_seats", nullable = false, columnDefinition = "bigint check (available_seats > 0)")
     private Integer availableSeats;
 
     @Column(name = "schedule", nullable = false, length = 25)
@@ -33,7 +32,4 @@ public class CourseOffering {
     @ManyToOne
     @JoinColumn(name = "lecturer_id", nullable = false)
     private Lecturer lecturer;
-
-//    @OneToMany(mappedBy = "courseOffering", cascade = CascadeType.ALL)
-//    private List<EnrollmentDetail> enrollmentDetails;
 }

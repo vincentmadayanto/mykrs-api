@@ -50,11 +50,6 @@ public interface EnrollmentRepository extends JpaRepository<Enrollment, UUID> {
                           @Param("total_quota") Integer totalQuota,
                           @Param("remaining_quota") Integer remainingQuota);
 
-//    @Modifying
-//    @Transactional
-//    @Query(value = "UPDATE t_enrollment SET remaining_quota = :remaining_quota WHERE id = :id", nativeQuery = true)
-//    void upda
-
     @Modifying
     @Transactional
     @Query(value = "DELETE FROM t_enrollment WHERE id = :id", nativeQuery = true)

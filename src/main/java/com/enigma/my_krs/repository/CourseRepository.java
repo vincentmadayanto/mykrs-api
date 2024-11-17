@@ -32,9 +32,9 @@ public interface CourseRepository extends JpaRepository<Course, UUID> {
     @Transactional
     @Query(value = "UPDATE m_course SET course_code = :course_code, name = :name, credits = :credits WHERE id = :id", nativeQuery = true)
     void updateCourse(@Param("id") UUID id,
-                          @Param("course_code") String courseCode,
-                          @Param("name") String name,
-                          @Param("credits") Integer credits);
+                      @Param("course_code") String courseCode,
+                      @Param("name") String name,
+                      @Param("credits") Integer credits);
 
     @Modifying
     @Transactional

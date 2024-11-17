@@ -1,5 +1,6 @@
 package com.enigma.my_krs.controller;
 
+import com.enigma.my_krs.constant.Constant;
 import com.enigma.my_krs.dto.request.CourseOfferingRequest;
 import com.enigma.my_krs.dto.request.SearchRequest;
 import com.enigma.my_krs.dto.response.CourseOfferingResponse;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/course-offerings")
+@RequestMapping(Constant.COURSE_OFFERING_API)
 @RequiredArgsConstructor
 public class CourseOfferingController {
     private final CourseOfferingService courseOfferingService;
@@ -22,7 +23,7 @@ public class CourseOfferingController {
     @PostMapping
     public ResponseEntity<?> createCourseOffering(@RequestBody CourseOfferingRequest request) {
         CourseOfferingResponse courseOffering = courseOfferingService.createCourseOffering(request);
-        return ResponseUtil.buildResponse(HttpStatus.CREATED, "Course offering created successsfully", courseOffering);
+        return ResponseUtil.buildResponse(HttpStatus.CREATED, Constant.SUCCESS_CREATE_COURSE_OFFERING, courseOffering);
     }
 
     @GetMapping
@@ -41,24 +42,24 @@ public class CourseOfferingController {
                 .sortDirection(sortDirection)
                 .build();
         Page<CourseOfferingResponse> courseOfferings = courseOfferingService.getAllCourseOfferings(pagingAndSortingRequest);
-        return ResponseUtil.buildResponsePage(HttpStatus.OK, "Fetch All course offering successfully", courseOfferings);
+        return ResponseUtil.buildResponsePage(HttpStatus.OK, Constant.SUCCESS_FETCH_ALL_COURSE_OFFERING, courseOfferings);
     }
 
     @GetMapping(path = "/{courseOfferingId}")
     public ResponseEntity<?> getCourseOfferingById(@PathVariable("courseOfferingId") UUID id) {
         CourseOfferingResponse courseOfferingById = courseOfferingService.getCourseOfferingById(id);
-        return ResponseUtil.buildResponse(HttpStatus.OK, "Fetch course offering by id successfully", courseOfferingById);
+        return ResponseUtil.buildResponse(HttpStatus.OK, Constant.SUCCESS_FETCH_COURSE_OFFERING_BY_ID, courseOfferingById);
     }
 
     @PutMapping(path = "/{courseOfferingId}")
     public ResponseEntity<?> updateCourseOfferingById(@PathVariable("courseOfferingId") UUID id, @RequestBody CourseOfferingRequest request) {
         CourseOfferingResponse courseOfferingResponse = courseOfferingService.updateCourseOfferingById(id, request);
-        return ResponseUtil.buildResponse(HttpStatus.OK, "Updated course offering by id successfully", courseOfferingResponse);
+        return ResponseUtil.buildResponse(HttpStatus.OK, Constant.SUCCESS_UPDATE_COURSE_OFFERING_BY_ID, courseOfferingResponse);
     }
 
     @DeleteMapping(path = "/{courseOfferingId}")
     public ResponseEntity<?> deleteCourseOfferingById(@PathVariable("courseOfferingId") UUID id) {
         courseOfferingService.deleteCourseOfferingById(id);
-        return ResponseUtil.buildResponse(HttpStatus.OK, "Delete course offering by id successfully", null);
+        return ResponseUtil.buildResponse(HttpStatus.OK, Constant.SUCCESS_DELETE_COURSE_OFFERING_BY_ID, null);
     }
 }

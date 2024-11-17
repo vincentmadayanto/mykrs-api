@@ -1,7 +1,6 @@
 package com.enigma.my_krs.repository;
 
 import com.enigma.my_krs.entity.CourseOffering;
-import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -44,12 +43,12 @@ public interface CourseOfferingRepository extends JpaRepository<CourseOffering, 
 
     @Query(
             value = """
-            SELECT COUNT(*)
-            FROM t_course_offering co
-            INNER JOIN m_course c ON co.course_id = c.id
-            WHERE (LOWER(c.course_code) LIKE LOWER(CONCAT('%', :query, '%'))
-                   OR LOWER(c.name) LIKE LOWER(CONCAT('%', :query, '%')))
-        """,
+                        SELECT COUNT(*)
+                        FROM t_course_offering co
+                        INNER JOIN m_course c ON co.course_id = c.id
+                        WHERE (LOWER(c.course_code) LIKE LOWER(CONCAT('%', :query, '%'))
+                               OR LOWER(c.name) LIKE LOWER(CONCAT('%', :query, '%')))
+                    """,
             nativeQuery = true
     )
     Long countAllCourseOfferings(@Param("query") String query);

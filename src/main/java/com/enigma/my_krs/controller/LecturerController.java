@@ -1,5 +1,6 @@
 package com.enigma.my_krs.controller;
 
+import com.enigma.my_krs.constant.Constant;
 import com.enigma.my_krs.dto.request.LecturerRequest;
 import com.enigma.my_krs.dto.response.LecturerResponse;
 import com.enigma.my_krs.service.LecturerService;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/lecturers")
+@RequestMapping(Constant.LECTURER_API)
 @RequiredArgsConstructor
 public class LecturerController {
     private final LecturerService lecturerService;
@@ -21,6 +22,6 @@ public class LecturerController {
     @PostMapping
     public ResponseEntity<?> createLecturer(@RequestBody LecturerRequest request) {
         LecturerResponse lecturerResponse = lecturerService.addLecturer(request);
-        return ResponseUtil.buildResponse(HttpStatus.CREATED, "Lecturer Created Successfully", lecturerResponse);
+        return ResponseUtil.buildResponse(HttpStatus.CREATED, Constant.SUCCESS_CREATE_LECTURER, lecturerResponse);
     }
 }

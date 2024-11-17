@@ -57,7 +57,7 @@ public class CourseServiceImpl implements CourseService {
         course.setCourseCode(request.getCourseCode());
         course.setName(request.getName());
         course.setCredits(request.getCredits());
-        courseRepository.updateCourse(course.getId() ,course.getCourseCode(), course.getName(), course.getCredits());
+        courseRepository.updateCourse(course.getId(), course.getCourseCode(), course.getName(), course.getCredits());
         return mapToCourseResponse(course);
     }
 

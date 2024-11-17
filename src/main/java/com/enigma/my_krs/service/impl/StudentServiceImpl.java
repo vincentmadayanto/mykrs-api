@@ -76,7 +76,6 @@ public class StudentServiceImpl implements StudentService {
                 .phoneNumber(student.getPhoneNumber())
                 .academicYear(student.getAcademicYear())
                 .semester(student.getSemester())
-//                .enrollments(List.of())
                 .build();
     }
 }

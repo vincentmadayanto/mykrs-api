@@ -43,12 +43,12 @@ public interface StudentRepository extends JpaRepository<Student, UUID> {
             "academic_year = :academic_year, " +
             "semester = :semester WHERE id = :id", nativeQuery = true)
     void updateStudent(@Param("id") UUID id,
-                      @Param("name") String name,
-                      @Param("student_number") String studentNumber,
-                      @Param("email") String email,
-                      @Param("phone_number") String phoneNumber,
-                      @Param("academic_year") Integer academicYear,
-                      @Param("semester") Integer semester);
+                       @Param("name") String name,
+                       @Param("student_number") String studentNumber,
+                       @Param("email") String email,
+                       @Param("phone_number") String phoneNumber,
+                       @Param("academic_year") Integer academicYear,
+                       @Param("semester") Integer semester);
 
     @Modifying
     @Transactional
